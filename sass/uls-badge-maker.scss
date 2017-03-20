@@ -1,0 +1,124 @@
+@import "compass/reset";
+@import "compass/css3/flexbox";
+
+*, *:before, *:after {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+/* flexbox */
+
+.flexbox-parent {
+    
+    @include display-flex();
+    @include flex-flow(column wrap);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(stretch);
+    
+    width: 100%;
+    height: 100%;
+    
+}
+
+.flexbox-item {
+    padding: 5px;
+}
+
+.flexbox-item-grow {
+    flex: 1; 
+}
+
+.fill-area {
+    @include display-flex();
+    @include flex-flow(row wrap);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(stretch);
+}
+
+.fill-area-content {
+    overflow: auto; 
+}
+
+/* flexbox end */
+
+.badge_wrapper {
+    
+    .header {
+        font-family: 'Open Sans Condensed', sans-serif;
+        font-size: 32px;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .canvas {
+        
+        height: 100%;
+        margin: 0 auto;
+        border: 1px solid #e8e8e8;
+        background: #e8e8e8;
+
+    }
+    
+    
+    .badges-selections {
+        
+        min-height: 300px;
+        
+        .badge_bg_container {
+    
+            @include display-flex();
+            @include flex-flow(row wrap);
+            @include flex( 1 );
+            
+            .badge-wrapper {
+        
+                width: 110px;
+                height: 110px;
+                padding: 5px 0;
+                
+                .badge {
+                    margin: 0 auto;
+                    width: 100px;
+                    height: 100px;
+                    background-color: #fff;
+                }
+                
+            }
+            
+            .badge-wrapper:hover {
+                background-color: #005f7f;
+            }
+            
+        }
+        
+    }
+    
+    .cta {
+        
+        button {
+            width: 100%;
+            height: 50px;
+        }
+        
+    }
+    
+    .footer {
+        font-size: 10px;
+        text-align: center;
+    }
+    
+}
