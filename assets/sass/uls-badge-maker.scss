@@ -40,11 +40,6 @@ body {
     font-family: sans-serif;
 }
 
-// svg
-.cls-1 {
-    fill: #fff;
-}
-
 // ULS Badge
 #uls-badge-maker {
     
@@ -131,7 +126,7 @@ body {
             
             .tab-content {
                 
-                display: grid;
+                display: none;
                 grid-template-columns: 1fr 1fr 1fr;
                 grid-gap: rem( $gutter );
                 align-items: flex-start;
@@ -139,22 +134,35 @@ body {
                 padding: rem( $gutter / 2 );
                 overflow: auto;
                 
-                .badges {
+                .badge {
                     
-                    cursor: pointer;
+                    border: rem( 1px ) solid #ccc;
+                    background-color: #eeeeee;
+                    padding: rem( $gutter / 2 );
                     
-                    .badge {
-                        border: rem( 1px ) solid #ccc;
-                        background-color: #eeeeee;
-                        padding: rem( $gutter / 2 );
-                    }
-                    
-                    .badge:hover {
-                        border-color: #005f7f;
+                    .name {
+                        font-size: 12px;
+                        text-align: center;
+                        color: #bbb;
                     }
                     
                 }
                 
+                .badge:hover {
+                    
+                    border-color: #005f7f;
+                    cursor: pointer;
+                    
+                    .name {
+                        color: #7c7c7c;
+                    }
+                    
+                }
+                
+            }
+            
+            .active {
+                display: grid;
             }
             
         }
@@ -338,6 +346,7 @@ and (min-device-width : 1025px) {
                     
                     grid-template-columns: 1fr 1fr 1fr;
                     grid-gap: rem( $gutter );
+                    height: auto;
                     
                 }
                 

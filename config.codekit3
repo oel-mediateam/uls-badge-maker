@@ -15,47 +15,81 @@
 		"oAP": "\/.gitignore",
 		"oF": 0
 		},
-	"\/config.rb": {
-		"ft": 131072,
-		"oA": 0,
-		"oAP": "\/config.rb",
+	"\/assets\/badges": {
+		"ft": 65536,
+		"oA": 1,
+		"oAP": "\/build\/assets\/badges",
 		"oF": 0
 		},
-	"\/css\/uls-badge-maker.css": {
+	"\/assets\/badges.json": {
+		"ft": 524288,
+		"oA": 1,
+		"oAP": "\/assets\/badges-min.json",
+		"oF": 1,
+		"oO": 0,
+		"oS": 1
+		},
+	"\/assets\/css\/uls-badge-maker.css": {
 		"aP": 1,
 		"bl": 0,
 		"ft": 16,
 		"ma": 0,
 		"oA": 0,
-		"oAP": "\/css\/uls-badge-maker-min.css",
+		"oAP": "\/assets\/css\/uls-badge-maker-min.css",
 		"oF": 0,
 		"oS": 0
 		},
-	"\/css\/uls-badge-maker.css.map": {
+	"\/assets\/sass\/uls-badge-maker.scss": {
+		"aP": 0,
+		"bl": 0,
+		"dP": 10,
+		"dS": 0,
+		"ft": 4,
+		"ma": 1,
+		"oA": 0,
+		"oAP": "\/assets\/css\/uls-badge-maker.css",
+		"oF": 0,
+		"oS": 3,
+		"uL": 1
+		},
+	"\/assets\/scripts\/jquery.js": {
+		"ft": 64,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scripts\/min\/jquery-min.js",
+		"oF": 1,
+		"sC": 0,
+		"tS": 0
+		},
+	"\/assets\/scripts\/uls-badge-maker-dev.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/scripts\/uls-badge-maker.js",
+		"oF": 2,
+		"sC": 3,
+		"tS": 0
+		},
+	"\/assets\/scripts\/uls-badge-maker.js": {
+		"ft": 64,
+		"mi": 1,
+		"oA": 0,
+		"oAP": "\/assets\/scripts\/min\/uls-badge-maker-min.js",
+		"oF": 0,
+		"sC": 1,
+		"tS": 0
+		},
+	"\/assets\/scripts\/uls-badge-maker.js.map": {
 		"ft": 8192,
 		"oA": 2,
-		"oAP": "\/css\/uls-badge-maker.css.map",
+		"oAP": "\/assets\/scripts\/uls-badge-maker.js.map",
 		"oF": 0
 		},
-	"\/fonts\/badge_bg.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/fonts\/badge_bg.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
-		},
-	"\/fonts\/badges.svg": {
-		"ft": 2097152,
-		"miP": 0,
-		"oA": 2,
-		"oAP": "\/fonts\/badges.svg",
-		"oF": 0,
-		"opt": 0,
-		"plM": 3758088159,
-		"prP": 0
+	"\/config.rb": {
+		"ft": 131072,
+		"oA": 0,
+		"oAP": "\/config.rb",
+		"oF": 0
 		},
 	"\/index.html": {
 		"ft": 8192,
@@ -86,52 +120,6 @@
 		"pME": 1,
 		"rFN": 0,
 		"uCM": 0
-		},
-	"\/sass\/uls-badge-maker.scss": {
-		"aP": 0,
-		"bl": 0,
-		"dP": 10,
-		"dS": 0,
-		"ft": 4,
-		"ma": 1,
-		"oA": 0,
-		"oAP": "\/css\/uls-badge-maker.css",
-		"oF": 0,
-		"oS": 3,
-		"uL": 1
-		},
-	"\/scripts\/jquery.js": {
-		"ft": 64,
-		"mi": 0,
-		"oA": 1,
-		"oAP": "\/scripts\/min\/jquery-min.js",
-		"oF": 1,
-		"sC": 0,
-		"tS": 0
-		},
-	"\/scripts\/uls-badge-maker-dev.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scripts\/uls-badge-maker.js",
-		"oF": 2,
-		"sC": 3,
-		"tS": 0
-		},
-	"\/scripts\/uls-badge-maker.js": {
-		"ft": 64,
-		"mi": 1,
-		"oA": 0,
-		"oAP": "\/scripts\/min\/uls-badge-maker-min.js",
-		"oF": 0,
-		"sC": 1,
-		"tS": 0
-		},
-	"\/scripts\/uls-badge-maker.js.map": {
-		"ft": 8192,
-		"oA": 2,
-		"oAP": "\/scripts\/uls-badge-maker.js.map",
-		"oF": 0
 		}
 	},
 "hooks": [
@@ -2079,7 +2067,7 @@
 	"languageDefaultsUserDefined": [
 		],
 	"previewPathAddition": "",
-	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules",
+	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/assets\/badges",
 	"sourceFolderName": "source",
 	"uglifyDefinesString": "",
 	"uglifyFlags2": {

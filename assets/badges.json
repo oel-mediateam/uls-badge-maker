@@ -1,0 +1,35 @@
+{
+    "badges": [
+
+        {
+            "name": "Video Blogging",
+            "path": "badges/vblogging"
+        },
+        
+        {
+            "name": "Blogging",
+            "path": "badges/blogging"
+        },
+        
+        {
+            "name": "Blogging",
+            "path": "badges/blogging2"
+        },
+        
+        {
+            "name": "Persona",
+            "path": "badges/persona"
+        },
+        
+        {
+            "name": "Etiquette",
+            "path": "badges/etiquette"
+        },
+        
+        {
+            "name": "Etiquette",
+            "path": "badges/etiquette2"
+        }
+    
+    ]
+}
