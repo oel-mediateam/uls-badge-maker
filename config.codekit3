@@ -39,6 +39,12 @@
 		"oF": 0,
 		"oS": 0
 		},
+	"\/assets\/css\/uls-badge-maker.css.map": {
+		"ft": 8192,
+		"oA": 2,
+		"oAP": "\/assets\/css\/uls-badge-maker.css.map",
+		"oF": 0
+		},
 	"\/assets\/sass\/uls-badge-maker.scss": {
 		"aP": 0,
 		"bl": 0,
@@ -51,6 +57,15 @@
 		"oF": 0,
 		"oS": 3,
 		"uL": 1
+		},
+	"\/assets\/scripts\/fabric.min.js": {
+		"ft": 64,
+		"mi": 0,
+		"oA": 1,
+		"oAP": "\/assets\/scripts\/min\/fabric.min-min.js",
+		"oF": 1,
+		"sC": 3,
+		"tS": 0
 		},
 	"\/assets\/scripts\/jquery.js": {
 		"ft": 64,

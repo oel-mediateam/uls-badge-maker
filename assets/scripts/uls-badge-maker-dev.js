@@ -10,7 +10,8 @@ $( function() {
         
         wrapper: $( '#uls-badge-maker' ),
         header: $( '#uls-badge-maker header' ),
-        canvas: $( '#uls-badge-maker .badge-body .canvas-wrapper' ),
+        canvasWrapper: $( '#uls-badge-maker .badge-body .canvas-wrapper' ),
+        hiddenShaper: $( '#uls-badge-maker .badge-body .canvas-wrapper .hidden-shaper' ),
         tabContainer: $( '#uls-badge-maker .badge-body .badge-container' ),
         tabControl: $( '#uls-badge-maker .badge-body .badge-container .tab-control' ),
         tabItem: $( '#uls-badge-maker .badge-body .badge-container .tab-control .tab-item' ),
@@ -25,6 +26,8 @@ $( function() {
     var badgeStatus = {
         loaded: false
     };
+    
+    var canvas = new fabric.Canvas( 'badge-preview' );
     
     calcLayout();
     $( window ).on( 'resize', calcLayout );
@@ -121,6 +124,7 @@ $( function() {
             
             var container = document.getElementsByClassName( selector )[0];
             var svg = document.createElementNS( 'http://www.w3.org/2000/svg', 'svg');
+            var svgToString = '';
             
             svg.setAttribute( 'width', "100%" );
             svg.setAttribute( 'height', "100%" );
@@ -128,8 +132,15 @@ $( function() {
             svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
             svg.innerHTML = $( data ).find( 'svg' ).html();
             
-            container.innerHTML = new XMLSerializer().serializeToString(svg);
+            svgToString = new XMLSerializer().serializeToString(svg);
+            
+            container.innerHTML = svgToString;
             container.innerHTML += '<div class="name">' + obj.name + '</div>';
+            
+            fabric.loadSVGFromString(svgToString, function(objects, options) {
+                var obj = fabric.util.groupSVGElements(objects, options);
+                canvas.add(obj).renderAll();
+            } );
             
         } );
         
@@ -161,7 +172,7 @@ $( function() {
         
         if ( $( document ).width() < 1025 ) {
             
-            var tContainerInverseHeight = layout.canvas.outerHeight();
+            var tContainerInverseHeight = layout.canvasWrapper.outerHeight();
         
             layout.tabContainer.css(
                 'height',
@@ -171,6 +182,9 @@ $( function() {
         } else {
             layout.tabContainer.css( 'height', '' );
         }
+        
+        canvas.setWidth( layout.hiddenShaper.width() );
+        canvas.setHeight( layout.hiddenShaper.height() );
         
     }
     

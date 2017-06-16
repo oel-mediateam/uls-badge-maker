@@ -75,9 +75,13 @@ body {
         
         .canvas-wrapper {
             
-            canvas {
+            .canvas-container {
                 display: block;
                 margin: 0 auto;
+            }
+            
+            .hidden-shaper {
+                display: none;
                 width: 100vw;
                 height: 100vw;
             }
@@ -198,8 +202,11 @@ and (max-device-width : 1024px) {
             
                 margin-top: rem( $gutter );
                 
-                canvas {
+                .canvas-container {
                     border: rem( 1px) solid #e8e8e8;
+                }
+                
+                .hidden-shaper {
                     width: 75vw;
                     height: 75vw;
                 }
@@ -236,8 +243,11 @@ and (min-device-width : 769px) {
             
                 padding-top: rem( $gutter );
                 
-                canvas {
+                .canvas-container {
                     border: rem( 1px) solid #e8e8e8;
+                }
+                
+                .hidden-shaper {
                     width: 90vw;
                     height: 90vw;
                 }
@@ -271,8 +281,11 @@ and (min-device-width : 769px) {
             
             .canvas-wrapper {
                 
-                canvas {
+                .canvas-container {
                     border: rem( 1px) solid #e8e8e8;
+                }
+                
+                .hidden-shaper {
                     width: rem( 450px );
                     height: rem( 450px );
                 }
@@ -327,9 +340,11 @@ and (min-device-width : 1025px) {
                 width: rem( 500px );
                 margin: 0;
                 
-                canvas {
-                    
+                .canvas-container {
                     border: rem( 1px) solid #e8e8e8;
+                }
+                
+                .hidden-shaper {
                     width: rem( 500px );
                     height: rem( 500px );
                 }
