@@ -31,5 +31,29 @@
             "path": "badges/etiquette2"
         }
     
+    ],
+    
+    "backgrounds": [
+        
+        {
+            "name": "Hexagon",
+            "path": "badges/backgrounds/hexagon"
+        },
+        
+        {
+            "name": "Shield",
+            "path": "badges/backgrounds/shield"
+        }
+        
+    ],
+    
+    "ribbons": [
+        
+        {
+            "name": "ribbon",
+            "path": "badges/ribbons/ribbon"
+        }
+        
     ]
+    
 }

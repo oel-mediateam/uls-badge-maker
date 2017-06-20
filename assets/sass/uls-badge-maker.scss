@@ -163,6 +163,12 @@ body {
                     
                 }
                 
+                .badge.selected {
+                    
+                    border-color: #005f7f;
+                    border-width: rem( 5px );
+                }
+                
             }
             
             .active {
