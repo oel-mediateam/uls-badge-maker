@@ -15,6 +15,7 @@ $( function() {
         ctaWrapper: $( '#uls-badge-maker .badge-body .cta' ),
         colorBoxes: $( '#uls-badge-maker .badge-body .badge-container .box' ),
         exportBtn: $( '#uls-badge-maker .badge-body .cta #exportBtn' ),
+        previewBtn: $( '#uls-badge-maker .badge-body .cta #previewBtn' ),
         titleTxtBox: $( '#uls-badge-maker .badge-body .canvas-wrapper .title_text_field input' ),
         ribbonTxtBox: $( '#uls-badge-maker .badge-body .canvas-wrapper .ribbon_text_field textarea' ),
         footer: $( '#uls-badge-maker footer' )
@@ -52,11 +53,33 @@ $( function() {
     // load data from JSON
     loadJSON( getBadges );
     
-    // expor btn event listener
+    // preview btn event listener
+    layout.previewBtn.on( 'click', function() {
+        
+        canvas.isDrawingMode = false;
+        window.open( canvas.toDataURL( {
+            format: 'png'
+        } ) );
+        
+    } );
+    
     layout.exportBtn.on( 'click', function() {
         
         canvas.isDrawingMode = false;
-        window.open( canvas.toDataURL( 'png' ) );
+        
+        var timestamp = new Date();
+        var link = document.createElement("a");
+        var imgData = canvas.toDataURL( {
+            format: 'png'
+        } );
+        var blob = dataURItoBlob(imgData);
+        var objurl = URL.createObjectURL(blob);
+        
+        link.download = "uls_badge_" + timestamp.getTime() + ".png";
+        
+        link.href = objurl;
+        
+        link.click();
         
     } );
     
@@ -507,6 +530,22 @@ $( function() {
         }
         
     } );
+    
+    function dataURItoBlob( dataURI ) {
+        
+        var arr = dataURI.split(',');
+        var mime = arr[0].match(/:(.*?);/)[1];
+        
+        var bstr = atob(arr[1]);
+        var n = bstr.length;
+        var u8arr = new Uint8Array(n);
+        
+        while( n-- ){
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        
+        return new Blob([u8arr], {type:mime});
+    }
     
     // Editing mode is entered on the IText
     canvas.on('text:editing:entered', function( e ) {

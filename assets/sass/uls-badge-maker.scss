@@ -1,5 +1,6 @@
 @import "compass/reset";
 @import "compass/css3/box-sizing";
+@import "compass/css3/border-radius";
 @import "compass/css3/flexbox";
 
 $base: 16px;
@@ -30,7 +31,6 @@ $gutter: 10px;
 
 html, body {
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     font-size: $base;
@@ -46,7 +46,6 @@ body {
     @include display-flex();
     @include flex-flow( column nowrap );
     width: 100%;
-    height: 100%;
     
     header {
         
@@ -88,14 +87,31 @@ body {
             }
             
             .cta {
-            
+                
+                margin-top: rem( $gutter );
                 padding: rem( $gutter / 2 ) rem( $gutter );
                 
                 button {
                     width: 100%;
-                    height: 50px;
-                    border: rem( 1px ) solid #888;
+                    height: rem( 50px );
+                    border: rem( 1px ) solid #3a7f10;
+                    background-color: #76c346;
+                    font-size: 16px;
+                    @include border-radius( rem( 5px ) );
                     cursor: pointer;
+                }
+                
+                button:hover {
+                    background-color: #aae486;
+                }
+                
+                #previewBtn {
+                    border: rem( 1px ) solid #0f4b87;
+                    background-color: #6e9dcc;
+                }
+                
+                #previewBtn:hover {
+                    background-color: #a4c8ec;
                 }
                 
             }
@@ -235,7 +251,11 @@ and (max-device-width : 1024px) {
                 margin-top: rem( $gutter );
                 
                 .canvas-container {
-                    border: rem( 1px) solid #e8e8e8;
+                    
+                    .upper-canvas {
+                        border: rem( 1px) solid #e8e8e8;
+                    }
+                    
                 }
                 
                 .hidden-shaper {
@@ -276,7 +296,11 @@ and (min-device-width : 769px) {
                 padding-top: rem( $gutter );
                 
                 .canvas-container {
-                    border: rem( 1px) solid #e8e8e8;
+                    
+                    .upper-canvas {
+                        border: rem( 1px) solid #e8e8e8;
+                    }
+                    
                 }
                 
                 .hidden-shaper {
@@ -314,18 +338,22 @@ and (min-device-width : 769px) {
             .canvas-wrapper {
                 
                 .canvas-container {
-                    border: rem( 1px) solid #e8e8e8;
+                    
+                    .upper-canvas {
+                        border: rem( 1px) solid #e8e8e8;
+                    }
+                    
                 }
                 
                 .hidden-shaper {
-                    width: rem( 450px );
-                    height: rem( 450px );
+                    width: rem( 500px );
+                    height: rem( 500px );
                 }
                 
                 .cta {
                     
                     button {
-                        width: rem( 450px );
+                        width: rem( 150px );
                     }
                     
                 }
@@ -373,7 +401,11 @@ and (min-device-width : 1025px) {
                 margin: 0;
                 
                 .canvas-container {
-                    border: rem( 1px) solid #e8e8e8;
+                    
+                    .upper-canvas {
+                        border: rem( 1px) solid #e8e8e8;
+                    }
+                    
                 }
                 
                 .hidden-shaper {
