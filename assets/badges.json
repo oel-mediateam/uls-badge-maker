@@ -29,6 +29,26 @@
         {
             "name": "Etiquette",
             "path": "badges/etiquette2"
+        },
+        
+        {
+            "name": "Speaker",
+            "path": "badges/speaker"
+        },
+        
+        {
+            "name": "Speaker",
+            "path": "badges/speaker2"
+        },
+        
+        {
+            "name": "Meeting",
+            "path": "badges/meeting"
+        },
+        
+        {
+            "name": "Negotiations",
+            "path": "badges/negotiations"
         }
     
     ],

@@ -202,7 +202,7 @@ $( function() {
         titleTextToDraw.set( {
             
             fontFamily: 'Montserrat',
-            top: 32,
+            top: 20,
             width: canvas.width,
             hasControls: false,
             lockMovementX: true,

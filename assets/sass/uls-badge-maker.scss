@@ -419,14 +419,18 @@ and (min-device-width : 1025px) {
                 
                 width: rem( 400px );
                 height: rem( 510px );
-                overflow: auto;
                 
                 .tab-content {
                     
                     grid-template-columns: 1fr 1fr 1fr;
                     grid-gap: rem( $gutter );
-                    height: auto;
+                    height: rem( 469px );
+                    overflow: auto;
                     
+                }
+                
+                #colors {
+                    height: auto;
                 }
                 
             }
