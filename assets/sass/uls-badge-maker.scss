@@ -72,9 +72,10 @@ body {
     .badge-body {
         
         height: calc(100% - 94px);
+        position: relative;
         
         .canvas-wrapper {
-            
+                        
             .canvas-container {
                 display: block;
                 margin: 0 auto;
@@ -112,13 +113,13 @@ body {
                 .tab-item {
                     padding: rem( 10px );
                     color: #777;
-                    border-bottom: rem( 5px ) solid #fff;
+                    border-bottom: rem( 5px ) solid #e8e8e8;
                     cursor: pointer;
                 }
                 
                 .tab-item:hover {
                     color: #000;
-                    border-bottom-color: #e8e8e8;
+                    border-bottom-color: #009acd;
                 }
                 
                 .tab-item.active {
@@ -138,7 +139,8 @@ body {
                 padding: rem( $gutter / 2 );
                 overflow: auto;
                 
-                .badge {
+                .badge,
+                .box {
                     
                     border: rem( 1px ) solid #ccc;
                     background-color: #eeeeee;
@@ -150,11 +152,22 @@ body {
                         color: #bbb;
                     }
                     
+                    span {
+                        display: none;
+                    }
+                    
                 }
                 
-                .badge:hover {
+                .box {
+                    height: 50px;
+                    padding: 0;
+                    background-color: #ccc;
+                }
+                
+                .badge:hover,
+                .box:hover {
                     
-                    border-color: #005f7f;
+                    border-color: #009acd;
                     cursor: pointer;
                     
                     .name {
@@ -164,9 +177,22 @@ body {
                 }
                 
                 .badge.selected {
-                    
                     border-color: #005f7f;
                     border-width: rem( 5px );
+                }
+                
+                .box.selected {
+                    border: none;
+                    position: relative;
+                }
+                
+                .box.selected:before {
+                    position: absolute;
+                    width: 100%;
+                    font-size: 35px;
+                    text-align: center;
+                    top: rem( 10px );
+                    content: "🎨";
                 }
                 
             }

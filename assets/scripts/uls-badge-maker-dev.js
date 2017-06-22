@@ -1,11 +1,6 @@
 // ON DOM READY
 $( function() {
     
-/*
-    var badgeCount = 0;
-    var badgeBGCount = 0;
-*/
-    
     var layout = {
         
         wrapper: $( '#uls-badge-maker' ),
@@ -18,6 +13,10 @@ $( function() {
         activeTabItem: $( '#uls-badge-maker .badge-body .badge-container .tab-control .tab-item.active' ),
         tabContent: $( '#uls-badge-maker .badge-body .badge-container .tab-content' ),
         ctaWrapper: $( '#uls-badge-maker .badge-body .cta' ),
+        colorBoxes: $( '#uls-badge-maker .badge-body .badge-container .box' ),
+        exportBtn: $( '#uls-badge-maker .badge-body .cta #exportBtn' ),
+        titleTxtBox: $( '#uls-badge-maker .badge-body .canvas-wrapper .title_text_field input' ),
+        ribbonTxtBox: $( '#uls-badge-maker .badge-body .canvas-wrapper .ribbon_text_field textarea' ),
         footer: $( '#uls-badge-maker footer' )
         
     };
@@ -32,12 +31,20 @@ $( function() {
         loaded: false
     };
     
+    var colors = {
+        loaded: false,
+        current: '#000'
+    };
+    
     var canvas = new fabric.Canvas( 'badge-preview', {
-        preserveObjectStacking: true
+        preserveObjectStacking: true,
+        backgroundColor: "#fff"
     } );
     var badgeToDraw = null;
     var badgeBGToDraw = null;
     var ribbonToDraw = null;
+    var titleTextToDraw = null;
+    var ribbonTextToDraw = null;
     
     calcLayout();
     $( window ).on( 'resize', calcLayout );
@@ -45,7 +52,13 @@ $( function() {
     // load data from JSON
     loadJSON( getBadges );
     
-    //$( document ).dequeue("initialLoad");
+    // expor btn event listener
+    layout.exportBtn.on( 'click', function() {
+        
+        canvas.isDrawingMode = false;
+        window.open( canvas.toDataURL( 'png' ) );
+        
+    } );
     
     // tab selection event
     layout.tabItem.on( 'click', function( e ) {
@@ -78,6 +91,50 @@ $( function() {
                 
                 case 'colors':
                     
+                    if ( !colors.loaded ) {
+                        
+                        layout.colorBoxes.each( function() {
+                        
+                            var hexCode = $( this ).find('span').data('hex');
+                            $( this ).css( 'background', hexCode );
+                            
+                        } );
+                        
+                        layout.colorBoxes.on( 'click', function() {
+                            
+                            var hexCode = $( this ).find('span').data('hex');
+                            
+                            layout.colorBoxes.removeClass( 'selected' );
+                            $( this ).addClass( 'selected' );
+                            
+                            if ( badgeToDraw ) {
+                                
+                                for (var i = 0; i < badgeToDraw.paths.length; i++) {
+                                
+                                    if ( badgeToDraw.paths[i].fill !== "#FFFFFF" ) {
+                                        badgeToDraw.paths[i].setFill(hexCode);
+                                    } 
+                                
+                                }
+                                
+                            }
+                            
+                            if ( badgeBGToDraw ) {
+                                badgeBGToDraw.setFill( hexCode );
+                            }
+                            
+                            if ( titleTextToDraw ) {
+                                titleTextToDraw.setFill( hexCode );
+                            }
+                            
+                            canvas.renderAll();
+                            colors.current = hexCode;
+                            
+                        } );
+            
+                        colors.loaded = true;
+                    }
+                    
                 break;
                 
             }
@@ -96,6 +153,7 @@ $( function() {
                 callback();
             }
             
+            getTitleTextbox();
             getRibbon();
             
         } ).fail( function( obj, error ) {
@@ -103,6 +161,33 @@ $( function() {
             displayAJAXError( error, this.url );
             
         } );
+        
+    }
+    
+    function getTitleTextbox() {
+        
+        titleTextToDraw = new fabric.Textbox( 'double click to edit text', {
+            fontSize: 28,
+            fontWeight: 'bold',
+            textAlign: 'center',
+            showplaceholder: true,
+            opacity: 0.3
+        } );
+        
+        canvas.add( titleTextToDraw );
+        
+        titleTextToDraw.set( {
+            
+            fontFamily: 'Montserrat',
+            top: 32,
+            width: canvas.width,
+            hasControls: false,
+            lockMovementX: true,
+            lockMovementY: true
+            
+        } ).setCoords().setFill( colors.current );
+        
+        canvas.renderAll().bringToFront( titleTextToDraw );
         
     }
     
@@ -128,16 +213,45 @@ $( function() {
             
                     ribbonToDraw = fabric.util.groupSVGElements(objects, options);
                     
-                    canvas.add(ribbonToDraw).renderAll();
+                    canvas.add(ribbonToDraw);
                     
                     ribbonToDraw.scaleToWidth( canvas.width * .95 ).set( {
                         
                         left: ( canvas.width - ribbonToDraw.getWidth() ) / 2,
-                        top: canvas.height - ribbonToDraw.getHeight() - 30
+                        top: canvas.height - ribbonToDraw.getHeight() - 30,
+                        selectable: false
                         
                     } ).setCoords();
                     
-                    canvas.renderAll().bringToFront(ribbonToDraw);
+                    // ribbon textbox
+                    ribbonTextToDraw = new fabric.Textbox( 'double click to edit text', {
+                        fontSize: 38,
+                        lineHeight: 1,
+                        fontWeight: 'bold',
+                        textAlign: 'center',
+                        fill: '#fff',
+                        showplaceholder: true,
+                        opacity: 0.3
+                    } );
+                    
+                    canvas.add( ribbonTextToDraw );
+                    
+                    ribbonTextToDraw.set( {
+                                    
+                        hasControls: false,
+                        lockMovementX: true,
+                        lockMovementY: true,
+                        fontFamily: 'Open Sans Condensed',
+                        width: 400,
+                        height: 80,
+                        left: ( canvas.width - 400 ) / 2,
+                        top: canvas.height - ribbonToDraw.getHeight() - 26.5
+                        
+                    } ).setCoords();
+                    
+                    canvas.renderAll()
+                          .bringToFront(ribbonToDraw)
+                          .bringToFront(ribbonTextToDraw);
                     
                 } );
                 
@@ -258,16 +372,30 @@ $( function() {
             
             badgeToDraw = fabric.util.groupSVGElements(objects, options);
             
-            canvas.add(badgeToDraw).renderAll();
+            canvas.add(badgeToDraw);
             
             badgeToDraw.scaleToHeight( canvas.height * .62 ).set( {
                 
                 left: ( canvas.width - badgeToDraw.getWidth() ) / 2,
-                top: 50
+                top: 38
                 
             } ).setCoords();
             
-            canvas.renderAll().bringToFront(badgeToDraw).bringToFront(ribbonToDraw);
+            badgeToDraw.lockUniScaling = true;
+            
+            for (var i = 0; i < badgeToDraw.paths.length; i++) {
+                                
+                if ( badgeToDraw.paths[i].fill !== "#FFFFFF" ) {
+                    badgeToDraw.paths[i].setFill( colors.current );
+                } 
+            
+            }
+            
+            canvas.renderAll()
+                  .bringToFront(badgeToDraw)
+                  .bringToFront( titleTextToDraw )
+                  .bringToFront(ribbonToDraw)
+                  .bringToFront(ribbonTextToDraw);
             
         } );
         
@@ -293,14 +421,15 @@ $( function() {
             
             badgeBGToDraw = fabric.util.groupSVGElements(objects, options);
             
-            canvas.add(badgeBGToDraw).renderAll()
+            canvas.add( badgeBGToDraw );
             
             badgeBGToDraw.scaleToHeight( canvas.height * .85 ).set( {
                 
                 left: ( canvas.width - badgeBGToDraw.getWidth() ) / 2,
-                top: canvas.height - badgeBGToDraw.getHeight() - 10
+                top: canvas.height - badgeBGToDraw.getHeight() - 10,
+                selectable: false
                 
-            } ).setCoords();
+            } ).setCoords().setFill( colors.current );
             
             canvas.renderAll().sendToBack(badgeBGToDraw);
             
@@ -349,5 +478,90 @@ $( function() {
         canvas.setHeight( layout.hiddenShaper.height() );
         
     }
+    
+    // A key got pressed in an IText which is in editing mode:
+    canvas.on('text:changed', function( e ) {
+        
+        var obj = e.target;
+        
+        if( obj.getText() === '' ) {
+            
+            obj.setText('double click to edit text');
+            obj.set('opacity', 0.3);
+            obj.set('showplaceholder', true);
+            obj.setCoords();
+            canvas.renderAll();
+            
+        } else if( obj.get('showplaceholder') === true ) {
+        
+            if( e.target.text !== 'double click to edit text' ) {
+                
+                obj.setText(obj.getText().substr(0,1));
+                obj._updateTextarea();
+                obj.set('opacity', 1);
+                obj.set('showplaceholder', false);
+                obj.setCoords();
+                canvas.renderAll();
+                
+            }
+        }
+        
+    } );
+    
+    // Editing mode is entered on the IText
+    canvas.on('text:editing:entered', function( e ) {
+        
+        var obj = e.target;
+        
+        if( obj.get('showplaceholder') === true) {
+        	
+        	obj.setSelectionStart(0);
+        	obj.setSelectionEnd(0);
+        	canvas.renderAll();
+        }
+        
+        if ( obj.getFontFamily() !== 'Montserrat' ) {
+            
+            obj.set( {
+                top: canvas.height - ribbonToDraw.getHeight() - 26.5
+            } ).setCoords();
+            canvas.renderAll();
+            
+        }
+        
+    } );
+    
+    canvas.on('text:editing:exited', function( e ) {
+        
+        var obj = e.target;
+        
+        if ( obj.get('showplaceholder') !== true) {
+        	
+        	var oTxt = obj.getText();
+            obj.setText( oTxt.toUpperCase() );
+            
+            if ( obj.getFontFamily() !== 'Montserrat' ) {
+                
+                if ( obj.height <= 42.94 ) {
+                
+                    obj.set( {
+                        top: canvas.height - ribbonToDraw.getHeight() - 5
+                    } ).setCoords();
+                    canvas.renderAll();
+                    
+                } else {
+                    
+                    obj.set( {
+                        top: canvas.height - ribbonToDraw.getHeight() - 26.5
+                    } ).setCoords();
+                    canvas.renderAll();
+                    
+                }
+                
+            }
+        	
+        }
+        
+    } );
     
 } ); // DOM READY END

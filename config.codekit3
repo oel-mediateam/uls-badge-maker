@@ -7,13 +7,13 @@
 		"uuidString": "58EEA3DE-8489-4794-A93D-4C6CDF6AD618"
 		}
 	],
-"creatorBuild": "25813",
+"creatorBuild": "25849",
 "files": {
 	"\/.gitignore": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/.gitignore",
-		"oF": 0
+		"oF": 1
 		},
 	"\/assets\/badges": {
 		"ft": 65536,
@@ -114,9 +114,9 @@
 		},
 	"\/LICENSE": {
 		"ft": 8192,
-		"oA": 2,
+		"oA": 1,
 		"oAP": "\/LICENSE",
-		"oF": 0
+		"oF": 1
 		},
 	"\/README.md": {
 		"cS": 0,
@@ -126,9 +126,9 @@
 		"ema": 1,
 		"eSQ": 1,
 		"ft": 4096,
-		"oA": 0,
+		"oA": 1,
 		"oAP": "\/README.html",
-		"oF": 0,
+		"oF": 1,
 		"oFM": 0,
 		"oS": 0,
 		"pHT": 0,
@@ -2081,6 +2081,7 @@
 		},
 	"languageDefaultsUserDefined": [
 		],
+	"overrideExternalServerCSS": 0,
 	"previewPathAddition": "",
 	"skippedFoldersString": "log, _logs, logs, _cache, cache, \/storage\/framework\/sessions, node_modules, \/assets\/badges",
 	"sourceFolderName": "source",
