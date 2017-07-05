@@ -256,6 +256,7 @@ $( function() {
                     ribbonTextToDraw = new fabric.Textbox( 'double click to edit text', {
                         fontSize: 38,
                         lineHeight: 1,
+                        fontFamily: 'Open Sans Condensed',
                         fontWeight: 'bold',
                         textAlign: 'center',
                         fill: '#fff',
@@ -270,7 +271,6 @@ $( function() {
                         hasControls: false,
                         lockMovementX: true,
                         lockMovementY: true,
-                        fontFamily: 'Open Sans Condensed',
                         width: 400,
                         height: 80,
                         left: ( canvas.width - 400 ) / 2,
@@ -406,13 +406,16 @@ $( function() {
             badgeToDraw.scaleToHeight( canvas.height * .62 ).set( {
                 
                 left: ( canvas.width - badgeToDraw.getWidth() ) / 2,
-                top: 38
+                top: 38,
+                centeredScaling: true
                 
             } ).setCoords();
             
             badgeToDraw.lockUniScaling = true;
             badgeToDraw.lockRotation = true;
             badgeToDraw.lockMovementX = true;
+            
+            badgeToDraw.setControlVisible( 'mtr', false );
             
             for (var i = 0; i < badgeToDraw.paths.length; i++) {
                                 
