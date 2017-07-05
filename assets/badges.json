@@ -49,6 +49,231 @@
         {
             "name": "Negotiations",
             "path": "badges/negotiations"
+        },
+        
+        {
+            "name": "Integration",
+            "path": "badges/integration"
+        },
+        
+        {
+            "name": "Cost",
+            "path": "badges/cost"
+        },
+        
+        {
+            "name": "Charter",
+            "path": "badges/charter"
+        },
+        
+        {
+            "name": "Blog Techniques",
+            "path": "badges/blog_techniques"
+        },
+        
+        {
+            "name": "Email Marketing",
+            "path": "badges/email_marketing"
+        },
+        
+        {
+            "name": "Entrepreneurship",
+            "path": "badges/entrepreneurship"
+        },
+        
+        {
+            "name": "Measuring Email",
+            "path": "badges/measuring_email"
+        },
+        
+        {
+            "name": "Getting a Job",
+            "path": "badges/getting_a_job"
+        },
+        
+        {
+            "name": "Getting to Yes",
+            "path": "badges/getting_to_yes"
+        },
+        
+        {
+            "name": "Data",
+            "path": "badges/data"
+        },
+        
+        {
+            "name": "Making Business",
+            "path": "badges/making_business"
+        },
+        
+        {
+            "name": "Proposals",
+            "path": "badges/proposals"
+        },
+        
+        {
+            "name": "Managing Conflict",
+            "path": "badges/managing_conflict"
+        },
+        
+        {
+            "name": "Chain Risk",
+            "path": "badges/chain_risk"
+        },
+        
+        {
+            "name": "Mapping Chain",
+            "path": "badges/mapping_chain"
+        },
+        
+        {
+            "name": "Excel Advanced",
+            "path": "badges/excel_advanced"
+        },
+        
+        {
+            "name": "Excel Essentials",
+            "path": "badges/excel_essentials"
+        },
+        
+        {
+            "name": "Excel Intermediate",
+            "path": "badges/excel_intermediate"
+        },
+        
+        {
+            "name": "Excel",
+            "path": "badges/excel"
+        },
+        
+        {
+            "name": "Cost Anaysis",
+            "path": "badges/cost_anaysis"
+        },
+        
+        {
+            "name": "Openings",
+            "path": "badges/openings"
+        },
+        
+        {
+            "name": "Communication",
+            "path": "badges/communication"
+        },
+        
+        {
+            "name": "Project Planning",
+            "path": "badges/project_planning"
+        },
+        
+        {
+            "name": "Schedule & Cost",
+            "path": "badges/schedule_cost"
+        },
+        
+        {
+            "name": "Project Management",
+            "path": "badges/project_management"
+        },
+        
+        {
+            "name": "Optimization",
+            "path": "badges/optimization"
+        },
+        
+        {
+            "name": "SEO Core",
+            "path": "badges/seo_core"
+        },
+        
+        {
+            "name": "SEO Tool",
+            "path": "badges/seo_tool"
+        },
+        
+        {
+            "name": "Supply Tools",
+            "path": "badges/supply_tools"
+        },
+        
+        {
+            "name": "Followup Emails",
+            "path": "badges/followup_emails"
+        },
+        
+        {
+            "name": "Target",
+            "path": "badges/target"
+        },
+        
+        {
+            "name": "Business Culture",
+            "path": "badges/swot"
+        },
+        
+        {
+            "name": "Chain Essentials",
+            "path": "badges/chain_essentials"
+        },
+        
+        {
+            "name": "Stakeholder",
+            "path": "badges/stakeholder"
+        },
+        
+        {
+            "name": "Successful Email",
+            "path": "badges/successful_email"
+        },
+        
+        {
+            "name": "Social Media",
+            "path": "badges/social_media"
+        },
+        
+        {
+            "name": "Documents",
+            "path": "badges/documents"
+        },
+        
+        {
+            "name": "Listening",
+            "path": "badges/listening"
+        },
+        
+        {
+            "name": "Phone",
+            "path": "badges/phone"
+        },
+        
+        {
+            "name": "Email",
+            "path": "badges/email"
+        },
+        
+        {
+            "name": "Global Speaking",
+            "path": "badges/global_speaking"
+        },
+        
+        {
+            "name": "Global Email",
+            "path": "badges/global_email"
+        },
+        
+        {
+            "name": "Global Presentation",
+            "path": "badges/global_presentation"
+        },
+        
+        {
+            "name": "Writing",
+            "path": "badges/writing"
+        },
+        
+        {
+            "name": "Grammar",
+            "path": "badges/grammar"
         }
     
     ],
