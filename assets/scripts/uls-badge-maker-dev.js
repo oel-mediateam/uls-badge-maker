@@ -256,7 +256,6 @@ $( function() {
                     ribbonTextToDraw = new fabric.Textbox( 'double click to edit text', {
                         fontSize: 38,
                         lineHeight: 1,
-                        fontFamily: 'Open Sans Condensed',
                         fontWeight: 'bold',
                         textAlign: 'center',
                         fill: '#fff',
@@ -271,6 +270,7 @@ $( function() {
                         hasControls: false,
                         lockMovementX: true,
                         lockMovementY: true,
+                        fontFamily: 'Open Sans Condensed',
                         width: 400,
                         height: 80,
                         left: ( canvas.width - 400 ) / 2,
