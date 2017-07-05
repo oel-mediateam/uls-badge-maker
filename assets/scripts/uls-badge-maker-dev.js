@@ -79,7 +79,13 @@ $( function() {
         
         link.href = objurl;
         
-        link.click();
+        var exportClickEvent = new MouseEvent( 'click', {
+            "view": window,
+            "bubble": true,
+            "cancelable": false
+        } );
+        
+        link.dispatchEvent( exportClickEvent );
         
     } );
     
@@ -405,6 +411,8 @@ $( function() {
             } ).setCoords();
             
             badgeToDraw.lockUniScaling = true;
+            badgeToDraw.lockRotation = true;
+            badgeToDraw.lockMovementX = true;
             
             for (var i = 0; i < badgeToDraw.paths.length; i++) {
                                 
