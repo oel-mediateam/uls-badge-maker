@@ -23,6 +23,11 @@ $( function() {
     };
     
     var icons = {};
+    var icomoon = {};
+    
+    var icomoonStatus = {
+        loaded: false
+    };
     
     var badgeStatus = {
         loaded: false
@@ -50,7 +55,7 @@ $( function() {
     calcLayout();
     $( window ).on( 'resize', calcLayout );
     
-    // load data from JSON
+    // load badges from JSON
     loadJSON( getBadges );
     
     // preview btn event listener
@@ -118,6 +123,10 @@ $( function() {
                     getBadgeBGs();
                 break;
                 
+                case 'icomoon': 
+                    // load icomonn form JSON
+                    loadIcoMoon( getIcons );
+                break;
                 case 'colors':
                     
                     if ( !colors.loaded ) {
@@ -191,6 +200,108 @@ $( function() {
             
         } );
         
+    }
+    
+    function loadIcoMoon( callback ) {
+        
+        if ( icomoonStatus.loaded === false ) {
+            
+            $.getJSON( 'assets/badges/icomoon/selection.json', function( data ) {
+                
+                var icomoonIcons = [];
+                
+                for ( var i in data.icons ) {
+                    
+                    if ( data.icons[i].setIdx === 0 ){
+                        icomoonIcons.push(data.icons[i]);
+                    }
+                    
+                }
+                
+                icomoon = icomoonIcons;
+                
+                if ( callback !== undefined ) {
+                    callback();
+                }
+                
+                icomoonStatus.loaded = true;
+                
+            } ).fail( function( obj, error ) {
+                
+                displayAJAXError( error, this.url );
+                
+            } );
+            
+        }
+        
+    }
+    
+    function getIcons() {
+        
+        var icons = icomoon;
+        
+        for ( var i = 0; i < icons.length; i++ ) {
+            
+            if ( icons[i].setIdx === 0 ) {
+                
+                var idx = icons[i].iconIdx + 1;
+                var file = padLeft(idx, 4) + "-" + icons[i].properties.name;
+                
+                var iconDiv = document.createElement( 'div' );
+            
+                iconDiv.classList.add( 'badge' );
+                iconDiv.classList.add( 'ico_icon' );
+                iconDiv.classList.add( 'ico' + i );
+                $( '#icomoon' ).append( iconDiv );
+                
+                if ( i >= icons.length - 1 ) {
+                    $( '#icomoon .loading' ).fadeOut( 1000 );
+                }
+                
+                showIcon( file, 'ico' + i );
+                
+            }
+            
+        }
+        
+        $( '.ico_icon' ).on( 'click', function() {
+            
+            $( '.ico_icon' ).removeClass( 'selected' );
+            $( this ).addClass( 'selected' );
+            
+            selectIcoIcon( this );
+            
+        } );
+        
+    }
+    
+    function showIcon( file, selector ) {
+        
+        $.get( 'assets/badges/icomoon/' + file + '.svg', function( data ) {
+            
+            var container = document.getElementsByClassName( selector )[0];
+            var svg = document.createElementNS( 'http://www.w3.org/2000/svg', 'svg');
+            var svgToString = '';
+            
+            var fileName = file.substring( 5, file.length );
+            
+            svg.setAttribute( 'width', "100%" );
+            svg.setAttribute( 'height', "100%" );
+            svg.setAttribute( 'viewBox', '0 0 64 64' );
+            svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+            svg.innerHTML = $( data ).find( 'svg' ).html();
+            
+            svgToString = new XMLSerializer().serializeToString(svg);
+            
+            container.innerHTML = svgToString;
+            container.innerHTML += '<div class="name">' + fileName + '</div>';
+            
+        } );
+        
+    }
+    
+    function padLeft(nr, n, str){
+        return Array(n-String(nr).length+1).join(str||'0')+nr;
     }
     
     function getTitleTextbox() {
@@ -408,6 +519,62 @@ $( function() {
                 left: ( canvas.width - badgeToDraw.getWidth() ) / 2,
                 top: 38,
                 centeredScaling: true
+                
+            } ).setCoords();
+            
+            badgeToDraw.lockUniScaling = true;
+            badgeToDraw.lockRotation = true;
+            badgeToDraw.lockMovementX = true;
+            
+            badgeToDraw.setControlVisible( 'mtr', false );
+            
+            for (var i = 0; i < badgeToDraw.paths.length; i++) {
+                                
+                if ( badgeToDraw.paths[i].fill !== "#FFFFFF" ) {
+                    badgeToDraw.paths[i].setFill( colors.current );
+                } 
+            
+            }
+            
+            canvas.renderAll()
+                  .bringToFront(badgeToDraw)
+                  .bringToFront( titleTextToDraw )
+                  .bringToFront(ribbonToDraw)
+                  .bringToFront(ribbonTextToDraw);
+            
+        } );
+        
+    }
+    
+    function selectIcoIcon( obj ) {
+        
+        var svg = document.createElementNS( 'http://www.w3.org/2000/svg', 'svg');
+        
+        svg.setAttribute( 'width', "100%" );
+        svg.setAttribute( 'height', "100%" );
+        svg.setAttribute( 'viewBox', '0 0 64 64' );
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.innerHTML = $( obj ).children("svg").html();
+        
+        var svgString = new XMLSerializer().serializeToString( svg );
+        
+        if ( badgeToDraw !== null ) {
+            canvas.remove( badgeToDraw );
+        }
+        
+        fabric.loadSVGFromString( svgString, function(objects, options) {
+            
+            badgeToDraw = fabric.util.groupSVGElements(objects, options);
+            
+            canvas.add(badgeToDraw);
+            
+            badgeToDraw.scaleToHeight( canvas.height * .62 ).set( {
+                
+                left: ( canvas.width - badgeToDraw.getWidth() ) / 2,
+                top: 38,
+                centeredScaling: true,
+                strokeWidth: 5,
+                stroke: '#fff'
                 
             } ).setCoords();
             
