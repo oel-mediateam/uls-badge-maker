@@ -279,6 +279,41 @@
         {
             "name": "Startup",
             "path": "badges/startup"
+        },
+        
+        {
+            "name": "Quote Buble",
+            "path": "badges/quote_bubble"
+        },
+        
+        {
+            "name": "Book",
+            "path": "badges/book"
+        },
+         
+        {
+            "name": "Budget Calculator",
+            "path": "badges/budget_calculator"
+        },
+         
+        {
+            "name": "Lock",
+            "path": "badges/lock"
+        },
+         
+        {
+            "name": "Notebook",
+            "path": "badges/notebook1"
+        },
+         
+        {
+            "name": "Notebook",
+            "path": "badges/notebook2"
+        },
+         
+        {
+            "name": "Radio Tower",
+            "path": "badges/radio_tower"
         }
     
     ],
