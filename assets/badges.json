@@ -314,6 +314,56 @@
         {
             "name": "Radio Tower",
             "path": "badges/radio_tower"
+        },
+         
+        {
+            "name": "Critical Thinking",
+            "path": "badges/critical_thinking"
+        },
+         
+        {
+            "name": "Problem Thinking",
+            "path": "badges/problem_solving"
+        },
+         
+        {
+            "name": "Coins",
+            "path": "badges/sales_coins"
+        },
+         
+        {
+            "name": "Money",
+            "path": "badges/sales_money"
+        },
+         
+        {
+            "name": "Customer Support",
+            "path": "badges/customer_support"
+        },
+         
+        {
+            "name": "Customer Chat",
+            "path": "badges/customer_chat_support"
+        },
+         
+        {
+            "name": "Management",
+            "path": "badges/management"
+        },
+         
+        {
+            "name": "Organizing",
+            "path": "badges/organizing"
+        },
+         
+        {
+            "name": "Planning",
+            "path": "badges/planning"
+        },
+         
+        {
+            "name": "Engineering",
+            "path": "badges/engineering"
         }
     
     ],
